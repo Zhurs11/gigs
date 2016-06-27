@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
+
 
 namespace GigHub.Web.Models
 {
@@ -7,11 +9,4 @@ namespace GigHub.Web.Models
     {
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection")
-        {
-        }
-    }
 }
