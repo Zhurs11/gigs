@@ -2,4 +2,10 @@ GigHub.Web/App_Data/aspnet-GigHub.Web-20160627042843.mdf
 GigHub.Web/App_Data/aspnet-GigHub.Web-20160627042843_log.ldf
 GigHub.Web/bin/
 GigHub.Web/obj/
-
+GigHub.Web/bin/GigHub.Web.dll
+GigHub.Web/bin/GigHub.Web.pdb
+GigHub.Web/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+GigHub.Web/obj/Debug/GigHub.Web.csproj.FileListAbsolute.txt
+GigHub.Web/obj/Debug/GigHub.Web.csproj.GenerateResource.Cache
+GigHub.Web/obj/Debug/GigHub.Web.dll
+GigHub.Web/obj/Debug/GigHub.Web.pdb
