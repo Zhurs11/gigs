@@ -16,6 +16,10 @@ textarea {
     max-width: 280px;
 }
 
+span.field-validation-error {
+    color: red;
+    font-weight: bold;
+}
 /* styles for validation helpers */
 .field-validation-error {
     color: #b94a48;
