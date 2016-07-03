@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using GigHub.Web.ViewModels;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 
 namespace GigHub.Web.Controllers
 {
@@ -17,11 +18,32 @@ namespace GigHub.Web.Controllers
         {
             _context = new ApplicationDbContext();
         }
-        
+
+        [Authorize]
+        public ActionResult Attending()
+        {
+            var userId = User.Identity.GetUserId();
+            var gigs = _context.Attendances
+                .Where(x => x.AttendeeId == userId)
+                .Select(a => a.Gig)
+                .Include(x => x.Artist)
+                .Include(x => x.Genre)
+                .ToList();
+
+            var viewModel = new GigsViewModel
+            {
+                UpcomingGigs = gigs,
+                ShowActions = User.Identity.IsAuthenticated,
+                Heading = "Gigs I'm attending"
+            };
+
+            return View("Gigs", viewModel);
+        }
+
         [Authorize]
         public ActionResult Create()
         {
-            var viewModel = new GigFormViewModel 
+            var viewModel = new GigFormViewModel
             {
                 Genres = _context.Genres.ToList()
             };
@@ -37,7 +59,7 @@ namespace GigHub.Web.Controllers
             if (!ModelState.IsValid)
             {
                 viewModel.Genres = _context.Genres.ToList();
-                return View("Create", viewModel);  
+                return View("Create", viewModel);
             }
 
             var gig = new Gig
@@ -53,5 +75,5 @@ namespace GigHub.Web.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-	}
+    }
 }
